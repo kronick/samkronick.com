@@ -1,0 +1,20 @@
+{
+  "name": "samkronick.com",
+  "version": "1.0.0",
+  "description": "Sam Kronick's personal home page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir build; cp index.html build/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kronick/samkronick.com.git"
+  },
+  "author": "Sam Kronick (@kronick)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kronick/samkronick.com/issues"
+  },
+  "homepage": "https://github.com/kronick/samkronick.com#readme"
+}
