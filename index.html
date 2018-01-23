@@ -1,415 +1,345 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.gif" />
+    <link rel="icon" href="favicon.gif" type="image/gif" />
+    <meta name="viewport" content="width=device-width, user-scalable=1">
+    <title>Sam Kronick - Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+        
+    <link rel="shortcut icon" href="favicon.gif" />
+    <link rel="icon" href="favicon.gif" type="image/gif" />        
+    
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-12201735-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+            
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script src="js/jquery.transit.min.js"></script>
+    <!--<script src="https://use.typekit.net/kmb0nzy.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>-->
+    <link rel="stylesheet" href="https://use.typekit.net/egh3zhq.css">
 
-<html>
-	<head>
-		<link rel="stylesheet" media="all" href="css/style.css" type="text/css" title="yeahyeah"/>
-		<title>Sam Kronick</title>
-		
-		<script type="text/javascript">
+</head>
+<body>
+<div id="background"></div>
+<div id="topBar"></div>
+<div id="contents">
+    <div id="header">
+        <h1>Sam Kronick</h1>
+        <div id="contactInfo">
+            📬&nbsp;<a href="mailto:sam@samkronick.com">sam@samkronick.com</a> 
+            📝&nbsp;<a href="http://www.samkronick.com/resume/">Résumé</a>
+        </div>
+    </div>
+    
+    <div id="projectFeature">
+    </div>
+    <div id="projectGrid">
+        <div class="project" data-name="ai-scry">
+            🔮&nbsp;<a href="#ai-scry" class="headline">Neural network image description in an iPhone app</a>
+            <div class="detail">
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/156349334' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                
+                <h3>Concept</h3>
+                <p>
+                    Point your camera at the world around you. Harnessing cutting-edge artificial neural network technology, AI • Scry (rhymes with "I spy") generates automatic textual descriptions of the objects it sees.
+                </p>
+                <p>
+                    View more about this project at <a href="http://u1f52e.net" target="_blank">http://u1f52e.net/</a>.
+                    <br>
+                    Press: <a href="http://www.theverge.com/2016/3/10/11187816/neuraltalk-ai-scry-app" target="_blank">The Verge</a>, <a href="http://www.fastcompany.com/3057742/app-economy/meet-the-app-that-uses-a-neural-network-to-describe-the-world" target="_blank">Fast Company</a>, <a href="http://techcrunch.com/2016/03/26/oakland-based-art-and-tech-studio-%F0%9F%92%BE%F0%9F%8C%B5-takes-critical-look-at-a-i/" target="_blank">Tech Crunch</a>, <a href="http://thecreatorsproject.vice.com/blog/ai-scry-neural-network-app" target="_blank">The Creators Project</a> and <a href="http://hyperallergic.com/295923/an-app-turns-the-failures-of-image-recognition-into-whimsical-text/" target="_blank">Hyperallergic</a>.
+                </p>
+                
+                <h3>Technical</h3>
+                <p>
+                    AI • Scry is built on top of Andrej Karpathy's <a href="https://github.com/karpathy/neuraltalk2" target="_blank">neuraltalk2</a> library. To turn that code into a consumer-friendly app that can be downloaded in a single tap I wrote a scalable cloud backend server and an iOS frontend.
+                </p>
+                <p>
+                    On a modern CPU core, neuraltalk2 provides about one caption for an image per second. To get responsiveness that feels like the app is providing captions on a live video feed for even a handful of users at once, I quickly realized I would need to build a scaling load-balanced cluster of servers. Since I expected demand to rise and fall sharply, I chose to do this with Amazon EC2 instances and built a messaging protocol that allowed worker processes to come and go without reconfiguring the whole cluster.
+                </p>
+                <p>
+                    I also built a custom logging and analytics server so I could track spikes in usage, status of worker processes, and overall usage trends. Over 3000 users purchased the app in its first two months, with an overall average of time spent in-app of 7.56 minutes and an average of 4.53 sessions per user. Not bad for a mysterious 99-cent art app with no marketing budget!
+                </p>
+                <p class="tech">
+                    Technologies used: Swift 2, Python, SQLite3, Flask, zeromq, lua, Amazon EC2 
+            </div>
+        </div>
+        
+        <div class="project" data-name="vibes">
+            💡&nbsp;<a href="#vibes" class="headline">Consensual Vibes: Tinder for ideas</a>
+            <div class="detail">
+                <img src="img/consensual-vibes/swipe3.gif">
+                
+                <h3>Concept</h3>
+                <p>
+                    Consensual Vibes is a proprietary ideation platform developed for <a href="http://diskcact.us" target="_blank">💾🌵 ("Disk Cactus") studio</a>. When we started the studio, we recognized the importance of generating a steady flow of unconventional ideas so I invented the Consensual Vibes algorithm to mediate the process.
+                </p>
+                <p>
+                    The process begins by brainstorming words associated loosely with an overall concept or theme. Then, each team member loads the app on their phone. The algorithm randomly sticks two or more words together to create a potential hybrid concept. For each combination, team members can swipe left if they don't like the idea or swipe right if they do. When all team members swipe right on the same concept, it's a match!
+                </p>
+                <p>
+                    Like any good generative system, Consensual Vibes starts with a relatively simple set of rules that create a low barrier to participation, but it winds up creating rich, strange, and captivating ideas that players may never have thought of on their own.
+                </p>
+                
+                <p>
+                    The entire experience is mediated by a boombox-like device that contains a wireless router to serve the app, a receipt printer that records matches, and a speaker that announces when a match has been made. The device also acts as the center of a more elaborate ritual designed to escape conventional thinking, initiated with a process of collecting soil from the chosen activity site in a remote setting. See the video below for documentation of the full ritual.
+                </p>
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/142207478' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                
+                <h3>Technical</h3>
+                <p>
+                    Since the entire experience of using this app is designed to work offline and in the wilderness, the content is served from a small battery-powered WIFI router running OpenWRT contained within the boombox. The router creates a captive portal running a lightweight webapp built with Flask and SQLite. The frontend is built with HTML5/CSS3/Javascript and is served from the OpenWRT router, so it exists independently of any app store.
+                </p>
+                <p>
+                    I designed the device enclosure in Rhino3D and milled it from a solid piece of white maple on a CNC router. I also designed and fabricated PCBs for the audio amplification and LED indicator light electronics. Finally, I designed and fabricated molds for plastic resin-cast accents that give the device additional character.
+                </p>
+                <img src="img/consensual-vibes/knolled.jpg">
+                <p class="tech">
+                    Technologies used: OpenWRT, Python, Flask, SQLite3, HTML5, CSS3, Javascript Javascript, jQuery, Rhino3D, RhinoCAM, CNC router, polyurethane resin
+                </p>
+            </div>
+        </div>
+        
+        <div class="project" data-name="emoji-keyboard">
+            ✨&nbsp;<a href="#emoji-keyboard" class="headline">Type emoji on your Mac laptop</a>
+            <div class="detail">
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/121100300' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <p>
+                💾🌵🎈😎💩❤️ is the new QWERTY.
+                </p>
+                <p>
+                    When I co-founded 💾🌵 (pronounced "Disk Cactus") studio, I gave it a distinctive and timely name composed solely of two unicode emoji characters (our official LLC paperwork even has us incorporated as U+1F4BE U+1F355, LLC, the longhand representation of the unicode code points for these characters). While most mobile devices today have great support for entering emoji characters, our team realized that a lot of our work and communication with clients was going to take place on a laptop keyboard. To let us type our own name (as well as many of our other favorite emoji), we invented the Emoji Keyboard— a silicone keyboard overlay and OSX keyboard layout software that turns caps lock into emoji mode.
+                </p>
+                <p>
+                    We launched this product with a <a href="https://www.kickstarter.com/projects/diskcactus/the-emoji-keyboard-type-emoji-on-your-mac" target="_blank">successful Kickstarter campaign</a>, raising over $20,000. <a href="http://www.cosmopolitan.com/lifestyle/news/a37749/kickstarter-emoji-keyboard/" target="_blank">Cosmo</a> called it "the most important Kickstarter campaign of our time" and it is now available from <a href="http://www.amazon.com/Emoji-Keyboard-Silicone-Software-Wireless/dp/B013APKNYE/ref=sr_1_1?ie=UTF8&qid=1464907878&sr=8-1" target="_blank">Amazon.com</a> and <a href="http://www.urbanoutfitters.com/urban/catalog/productdetail.jsp?pid=&id=39211206&catId=A_MUSIC_VITUR" target="_blank">Urban Outfitters</a> (in stores and online).
+                </p>
+                <img src="img/emoji-keyboard/hands-typing.jpg">
+                <img src="img/emoji-keyboard/peel-1.gif">
+                <p>
+                    More info at <a href="http://emojikeyboard.club" target="_blank">http://emojikeyboard.club</a>
+                </p>
+            </div>
+        </div>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-12201735-2']);
-  _gaq.push(['_setDomainName', '.newuntitledpage.com']);
-  _gaq.push(['_trackPageview']);
+<!--
+        <div class="project" data-name="colorbot">
+            🐝&nbsp;<a href="#colorbot" class="headline">See the world like a bee or a snake</a>
+            <div class="detail">
+                <img src="img/colorbot/tara-flower.jpg">
+                <p>
+                    The <a href="http://calacademy.org/" target="_blank">California Academy of Sciences</a> contacted me and the team at <a href="http://diskcact.us" target="_blank">💾🌵</a> to design a project to promote the opening of their new Color of Life exhibit. After working with their marketing team and reading about some of the work that would be in the show, we decided to build a portable version of one of the long-term exhibits. The result was Colorbot: a 
+                </p>
+                <img src="img/colorbot/jumpsuit.jpg">
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+            </div>
+        </div>
+-->
+        
+        <div class="project" data-name="maker-faire">
+            🔊&nbsp;<a href="#maker-faire" class="headline">Can explosions make music?</a>
+            <div class="detail">
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/159288103' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <h3>Concept</h3>
+                <p>
+                    Can explosions make music? This was the brief that <a href="http://weremagnetic.com/">Magnetic</a> handed to <a href="http://diskcact.us" target="_blank">💾🌵</a> for <a href="http://www.google.com" target="_blank">Google</a>'s interactive pavilion at <a href="http://makerfaire.com/" target="_blank">Maker Faire</a> 2015. We made it possible with a combination of computer vision tech and a generative music algorithm that mapped exploding confetti particles to pitch and volume of different instruments. With an industrial high speed camera, we turned over 1000 fleeting moments into 1000 unique sound compositions for 1000+ families that stopped by our booth.
+                </p>
+                <h3>Technical</h3>
+                <p>
+                    This installation consisted of 3 main components: a camera capture system, a video processing and visualization application, and a generative sound system. I chose to use a <a href="http://ximea.com" target="_blank">XIMEA</a> high framerate industrial camera module because of it's API support. XIMEA provides a C language library that works on OSX and I wrote a wrapper for that to work with the Cinder framework in C++. The video processing is done using OpenCV and Cinder with some help from GLSL shaders. The movement of each individual particle of confetti is tracked, and information from the particles' position and velocity is used to generate OSC control messages that are passed to a Max/MSP patch. The patch then generates a realtime polyphonic soundscape using four different synthetic instruments designed for the activation.
+                </p>
+                <p>
+                    The video below shows the visual software interface with the four different colors of particles separated out.
+                </p>
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/159275943' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <p class="tech">
+                    Technologies used: Cinder (C/C++), OpenCV (C++), XIMEA industrial camera, Max/MSP, Open Sound Control (OSC)
+                </p>
+            </div>
+        </div>
+        
+        
+        
+        <div class="project" data-name="wifi-walkman">
+            🌐&nbsp;<a href="#wifi-walkman" class="headline">Listen to WIFI networks as you move through the city</a>
+            <div class="detail">
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/156912324' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <h3>Concept</h3>
+                <p>
+                    The WIFI Walkman is an information sonification device that allows you to hear the presence of invisible WIFI signals that permeate our environment. It is designed to be portable so that a user can experience spatial differences in network density and character. It was produced as an extension of work I did with <a href="http://slowerinternet.com" target="_blank">The Consortium for Slower Internet</a>.
+                </p>
+                <img src="img/wifiwalkman/wifi-walkman.jpg">
+                <h3>Technical</h3>
+                <p>
+                    The WIFI Walkman is powered by a Raspberry Pi 2. The software scans for WIFI network names, converts the network MAC addresses to a unique sequence of audio tones, and reads the network SSID using text-to-speech software. All the hardware components are packed into a custom enclosure CNC milled from a block of maple wood with resin-cast accents.
+                </p>
+                <p class="tech">
+                    Technologies used: Raspberry Pi, Python, sox, espeak, Rhino3D, RhinoCAM, CNC router, polyurethane resin
+                </p>
+                <img src="img/wifiwalkman/walkman-knolled.jpg">
+                
+            </div>
+        </div>
+        
+        <div class="project" data-name="walking-house">
+            🏠&nbsp;<a href="#walking-house" class="headline">A robotic house that walks</a>
+            <div class="detail">
+                <div class='embed-container'><iframe src='https://www.youtube.com/embed/gkb6jfEwe0g' frameborder='0' allowfullscreen></iframe></div>
+                <h3>Concept</h3>
+                <p>
+                    In 2008, I started collaborating with Danish artist collective <a href="http://n55.dk" target="_blank">N55</a>. One of the projects we produced together is the WALKING HOUSE.
+                </p>
+                <p>
+                    WALKING HOUSE is a modular dwelling system that enables persons to live a peaceful nomadic life, moving slowly through the landscape or cityscape with minimal impact on the environment. It collects energy from its surroundings using solar cells and small windmills. There is a system for collecting rain water and a system for solar heated hot water. A small greenhouse unit can be added to the basic living module, to provide a substantial part of the food needed by the Inhabitants. A composting toilet system allows sewage produced by the inhabitants to be disposed of. A small wood burning stove could be added to provide CO2 neutral heating. WALKING HOUSE forms various sizes of communities or WALKING VILLAGES when more units are added together. WALKING HOUSE is not dependent on existing infrastructure like roads, but moves on all sorts of terrain.
+                </p>
+                <p>
+                    The WALKING HOUSE was commissioned by Wysing Arts Center in the U.K. and presented as part of the 2010 European Capital of Culture near Essen, Germany. As part of the latter exhibition, it walked every day in public performances for 100 days. Two friends and I lived inside and maintained the house during the course of exhibition.
+                </p>
+                <p>
+                    More at <a href="http://www.n55.dk/MANUALS/WALKINGHOUSE/walkinghouse.html">N55.dk</a>.
+                </p>
+                <img src="img/walkinghouse/house-vs-bike.jpg">
+                <h3>Technical</h3>
+                <p>
+                    As part of this collaboration, I was responsible for most of the power systems engineering and software design. The house walks on six fully articulated legs each powered by three electric linear actuators in a tetrahedral arrangement. The whole system is solar powered to be sustainable off the grid.
+                </p>
+                <p>
+                    The unique tetrahedral design of the leg required me to derive custom kinematics equations and write a walking algorithm that would ensure all 18 actuators stayed perfectly synchronized; due to the weight of the house and the strength of the actuators, any mismatch in movement would literally tear the house apart. As part of the system, I designed custom Arduino-based quadrature encoder boards and motor control electronics to handle all 18 channels of motion at once.
+                </p>
+                <p class="tech">
+                    Technologies used: Processing, Arduino, motion control electronics
+                </p>
+                <img src="img/walkinghouse/ion-on-house.jpg">
+            </div>
+        </div>
+        
+        <div class="project" data-name="iheartradio">
+            📻&nbsp;<a href="#iheartradio" class="headline">Live video processing and a CMS for a street-level video wall</a>
+            <div class="detail">
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/159281343' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <h3>Concept</h3>
+                <p>
+                    When I was working with the team at <a href="http://www.sosolimited.com" target="_blank">Sosolimited</a>, I worked on the software that drives a permanent social media-powered LED video wall in the entryway to <a href="http://iheartradio.com/" target="_blank">iHeartRadio</a>'s new concert venue in Burbank, CA. The system we built pulls live tweets about artists and dynamically remixes archival video footage to capture the unique energy of every event. To program and moderate content, the system also has a web-based content management system, so iHeartRadio's staff across the country can be in control.
+                </p>
+                <h3>Technical</h3>
+                <p>
+                    iHeartRadio had a lot of unedited, raw footage from past concerts that they wanted to be able to use on this video wall with minimal effort. This meant eliminating most post-production work, so the software we built had to automate some of the basic features of a video editing system like AfterEffects. As a result, all video transitions, graphic overlays, video effects, and the inclusion of social media data are done in realtime using openFrameworks and GLSL shaders. The result is that no matter what quality of content iHeartRadio staff throws at the wall, it always looks pretty good.
+                </p>
+                <p>
+                    Another major challenge for this project was building a web-based CMS frontend that could reliably control the display. Because everything was running on multiple machines and written in multiple languages, I suggested a messaging architecture using RabbitMQ that would ensure all configuration changes and state transitions were kept in sync regardless of whether one piece needed to be restarted independently of the others.
+                </p>
+                <p class="tech">
+                    Technologies used: openFrameworks / C++, GLSL, ffmpeg, Flask, RabbitMQ
+                </p>
+            </div>
+        </div>        
+        
+        <div class="project" data-name="csis">
+            📊&nbsp;<a href="#csis" class="headline">A DMX-controlled architectural scale data visualization</a>
+            <div class="detail">
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/159283757' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <h3>Concept</h3>
+                <p>
+                    This is another permanent installation I worked on with the team at <a href="http://www.sosolimited.com" target="_blank">Sosolimited</a>. The concept here was to build an architectural-scale data visualization for the <a href="https://www.csis.org/" target="_blank">Center for Strategic and International Studies</a> new headquarters in Washington, DC. The result is a "data chandelier" with 425 independently controlled pendants that form a map of the world when viewed from below. We used this as a canvas to tell stories with data sources relevant to CSIS's work such as GDP growth and global water usage.
+                </p>
+                <h3>Technical</h3>
+                <p>
+                    As a permanent installation, a lot of work went into designing and pre-visualizing the final physical form of this work. I developed a number of Processing sketches to experiment with different forms and display resolutions. Initially the resolution of pendants was to be much higher but this had to be reduced for cost reasons; the sketches I made helped determine how low we could go and still have a legible display.
+                </p>
+                <p>
+                    I also wrote Python scripts to process the raw data and turn it into a format that our animation library in openFrameworks could work with. I helped script those animations and wrote a OSX Cocoa UI to adjust parameters and provide a final interface to the installation. The openFrameworks app outputs DMX signals that are then handled by standard lighting hardware integrated into the structure.
+                </p>
 
-	</script>
-	
-	<script src="lightbox/js/jquery-1.7.2.min.js"></script>
-	<script src="lightbox/js/lightbox.js"></script>	
-	
-	<link href="lightbox/css/lightbox.css" rel="stylesheet" />
-	
-	</head>
-		
-	<body>
-		<h1>Sam Kronick</h1>
-		<a href="mailto:sam@samkronick.com">sam@samkronick.com</a>
-		<br />
-		+1 (612) 532-4561
-		<h3>Education</h3>
-		<b><a href="http://www.ucsd.edu" target="_blank">University of California San Diego</a></b> - <i>San Diego, CA</i>
-			<ul>
-				<li>Master of Fine Arts in the <a href="http://visarts.ucsd.edu/">Department of Visual Arts</a> - June 2013</li>
-			</ul>
-		<b><a href="http://web.mit.edu" target="_blank">Massachusetts Institute of Technology</a></b> - <i>Boston, MA</i>
-			<ul>
-					<li>B.S. in architecture and visual arts, class of 2010</li>
-					<li>Humanities concentration in Science, Technology, and Society</li>
-			</ul>
+                <p class="tech">
+                    Technologies used: Python, openFrameworks (C++), ofxDMX, Objective C / Cocoa
+                </p>
+            </div>
+        </div>                
+        
+        <div class="project" data-name="dblcam">
+            👯&nbsp;<a href="#dblcam" class="headline">This app lets you take two photos at the same time</a>
+            <div class="detail">
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/169316845' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
 
+                <h3>Concept</h3>
+                <p>
+                    DBLCAM is an iPhone app that lets you take two photos back-to-back using the two cameras on your iPhone. I came up with the idea soon after I heard that the iPhone 4 would add a front-facing camera and learned Objective C and iOS development just to make it happen. Later on I sold the app to <a href="http://socialprintstudio.com" target="_blank">Social Print Studio</a> and to date it has over a million downloads.
+                </p>
+                <p>
+                    Try it out in the <a href="https://itunes.apple.com/us/app/dblcam/id605269890?mt=8" target="_blank">App Store</a> and see how people are using it on <a href="https://www.instagram.com/explore/tags/dblcam/" target="_blank">Instagram</a>.
+                </p>
 
-		<a name="slowerinternet"></a>
-		<h3>The Consortium for Slower Internet (2013)</h3>
-		<ul>
-			<li>
-				In the summer of 2013, I founded the <a href="http://slowerinternet.com">Consortium for Slower Internet</a> as an umbrella organization for my various activities. The Consortium functions as a design studio and research laboratory, pursuing projects that adhere to the <a href="http://slowerinternet.com/principles.html">principles for slower internet</a>.
-				<br /><br />
-				<a href="http://slowerinternet.com"><img src="img/slowerinternet/homepage.jpg" /></a>
-				<br /><br />
-			</li>
-			<li>
-				The <strong><a href="http://slowerinternet.com/cybernetic-meadow.html">Cybernetic Meadow Collection</a></strong> is a set of handmade objects that seek to reorient your relationship to consumer electronics in your home.
-				<br />
-				<a href="http://slowerinternet.com/cybernetic-meadow.html"><img src="img/slowerinternet/router-1-small.jpg" /></a>
-				<br /><br />
-			</li>
-			<li>
-				I am available for consulting and project work in the context of the <a href="http://slowerinternet.com/research.html">Consortium's research lab</a>.
-			</li>
-		</ul>
+            </div>
+        </div>                
+        
+        <div class="project" data-name="creatorslive">
+            📷&nbsp;<a href="#creatorslive" class="headline">A realtime interactive photo visualizer for Instagram posts</a>
+            <div class="detail">
+                <div class='embed-container'>
+                    <iframe src='http://player.vimeo.com/video/159274892' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <h3>Concept</h3>
+                <p>
+                    Back in 2012, <a href="http://http://thecreatorsproject.vice.com/" target="_blank">The Creators Project</a> approached me and the team at Social Print Studio to build an interactive Instagram visualizer for their art and music festival at Fort Mason in San Francisco. This format of interactive social media display is common now, but at the time it was only recently possible: Instagram had just released their API and the Microsoft Kinect had just  become available.
+                </p>
+                <h3>Technical</h3>
+                <p class="tech">
+                    Technologies used: Processing (Java), OpenGL, Microsoft Kinect, Instagram API
+                </p>
+            </div>
+        </div>
+        
+        <div class="project" data-name="worldwidewest">
+            📡&nbsp;<a href="#worldwidewest" class="headline">World Wide West</a>
+            <div class="detail">
+                <img src="img/www/trenching-a.jpg">
+                <h3>Concept</h3>
+                <p>
+                    In 2015, I co-founded the first annual World Wide West festival of new media, arts, and digital culture. We invited 25 artists, writers, and technologists from across the country to convene in Point Arena, CA for a weekend of activity and discussions. We wanted to create space for much-needed critical discourse about technology and art in the SF Bay Area.
+                </p>
+                <p>
+                    One of the main activities that I planned was the performative burial of a 350-meter-long fiber optic cable to create a new Internet node in the middle of a field. Participants used shovels to dig a trench for the cable by hand over the course of the event.
+                </p>
+                <p>
+                    In keeping with the theme of exploring internet infrastructure, I also organized a visit to the site of a trans-Pacific submarine fiber optic cable that lands on a beach in Manchester, CA. We invited guests to bring wetsuits and surfboards so we could all literally "surf the web".
+                </p>
+                <p>
+                    World Wide West will return for its second year in the summer of 2016 with an expanded roster of artists. View the <a href="http://worldwidewest.net/2015/" target="_blank">archive from 2015</a> or read about it on <a href="http://hyperallergic.com/226668/welcome-to-world-wide-west-a-summit-on-the-side-effects-of-technology/" target="_blank">Hyperallergic</a>.
+                </p>
+                <img src="img/www/surf.jpg">
+                <img src="img/www/skype-platform.jpg">
+                
+            </div>
+        </div>
+       
+    </div>
 
-		<a name="networksnewtowns"></a>
-		<h3>Networks + New Towns (2013)</h3>
-		<ul>
-			<li>
-				A video essay and installation that grew out of an extended site study of Jonathan, Minnesota and related areas. The suburban neighborhood of Jonathan was one of the first "totally planned communities" in the Midwest, born during the short-lived "New Town" movement of the late 1960's. It grew up during an era characterized by great faith in the power of urban planning and the transformative potential of communications technology. This work uses Jonathan as a microcosm to understand the ways that we augment the earth with matter and data in an ongoing pursuit of better living.
-				<p>
-					<iframe src="http://player.vimeo.com/video/74646076?byline=0&amp;portrait=0&amp;color=ffffff" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				</p>
-				<a href="#" id="networks-watchall"><strong>[Click to view Chapters 2-4]</strong></a>
-
-				<br /><br />
-				
-				<div id="networks-allchapters">
-				<p>
-					<iframe src="http://player.vimeo.com/video/74699459?byline=0&amp;portrait=0&amp;color=ffffff" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				</p>		
-				<p>
-					<iframe src="http://player.vimeo.com/video/74880108?byline=0&amp;portrait=0&amp;color=ffffff" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				</p>
-				<p>
-					<iframe src="http://player.vimeo.com/video/74901844?byline=0&amp;portrait=0&amp;color=ffffff" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				</p>
-				</div>
-				<script type="text/javascript">
-				$("#networks-allchapters").hide();
-				$("#networks-watchall").click(function() { $("#networks-allchapters").slideDown(); $("#networks-watchall").hide(); return false;});
-				</script>
-			</li>
-			<li>
-				The original showing of NETWORKS + NEW TOWNS was presented as a three channel video installation with a set of 1:12 scale model objects and live narration.
-				<p>
-					<a href="img/networksnewtowns/screening-seated.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/screening-seated-small.jpg" /></a>
-				</p>					
-				<p>
-					<a href="img/networksnewtowns/overhead-straight.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/overhead-straight-small.jpg" /></a>
-				</p>
-				<p>
-					<a href="img/networksnewtowns/security-gate-overview.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/security-gate-overview-small.jpg" /></a>
-				</p>		
-				<a href="#" id="networks-viewallphotos"><strong>All photos...</strong></a>
-				<div id="networks-allpics">
-				<p>
-					<a href="img/networksnewtowns/overhead-corner.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/overhead-corner-small.jpg" /></a>
-				</p>
-				<p>
-					<a href="img/networksnewtowns/cable-trailer-backlit-profile.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/cable-trailer-backlit-profile-small.jpg" /></a>
-				</p>
-				<p>
-					<a href="img/networksnewtowns/lamp-post-video-bg.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/lamp-post-video-bg-small.jpg" /></a>
-				</p>
-				<p>
-					<a href="img/networksnewtowns/fiber-posts-close.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/fiber-posts-close-small.jpg" /></a>
-				</p>		
-				<p>
-					<a href="img/networksnewtowns/utility-box-close.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/utility-box-close-small.jpg" /></a>
-				</p>
-				<p>
-					<a href="img/networksnewtowns/security-gate-island-low.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/security-gate-island-low-small.jpg" /></a>
-				</p>
-				
-				<p>
-					<a href="img/networksnewtowns/spools-low.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/spools-low-small.jpg" /></a>
-				</p>		
-				<p>
-					<a href="img/networksnewtowns/supplies-low.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/supplies-low-small.jpg" /></a>
-				</p>			
-
-				<p>
-					<a href="img/networksnewtowns/screening-talking.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/screening-talking-small.jpg" /></a>
-				</p>					
-				<p>
-					<a href="img/networksnewtowns/walking-through.jpg" rel="lightbox[networks]" target="_blank"><img src="img/networksnewtowns/walking-through-small.jpg" /></a>
-				</p>		
-				</div>			
-
-				<script type="text/javascript">
-				$("#networks-allpics").hide();
-				$("#networks-viewallphotos").click(function() { $("#networks-allpics").slideDown(); $("#networks-viewallphotos").hide(); return false;});
-				</script>
-			</li>
-		</ul>
-
-		<a name="nodes"></a>
-		<h3>Nodes (2013)</h3>
-		<ul>
-			<li>
-				<div id="nodes-preview">
-					The non-places of cyberspace. <a href="#" id="nodes-expander">Read more...</a>
-				</div>
-				<div id="nodes-fulltext">
-				When we get comfortable enough with a system, the nuances of its topology fade away. Our words 
-				begin to mirror our internal mapping of concepts, apparent when we use a word like "WIFI" as a metonym 
-				for the Internet in whole. But WIFI only takes us to another local node, not to our data spread around the 
-				world. Before our bits hit the wild Internet, they must pass through a router, or as this type of computer 
-				was originally called, a <em>gateway</em>. While we don't often consider the different types of physical gates or 
-				doors we use every day, we at least understand there is a radical difference between the experience of a 
-				border crossing and a shower curtain. <em>Computer networks are no less diverse.</em> 
-				<br /><br />
-				The clich&eacute; of cyberspace is founded in such a spatial conception of information systems&mdash; a user of a 
-				network experiences being in a place, clicking through login screens and menus as if they were landmarks 
-				or checkpoints on a journey. Our everyday routines lead us along familiar routes: from the devices we use 
-				to the local networks we access; to the websites we check regularly, but our vocabulary is weak when it 
-				comes to scrutinizing these spaces in comparison to our nuanced language in discussing the politics of 
-				our cities. 
-				<br /><br />
-				When gadgets and gadget-makers are such prominent topics of contemporary conversation, it is worth 
-				noting that one of the many devices which serve a pivotal function in the consumer electronics 
-				ecosystem seems to thoroughly dissolve into the collective unconscious: the Internet router, a 
-				cornerstone of any home network, is rendered invisible in its role as diligent and uncomplicated access 
-				point. Despite the fact that the entirety of a household's correspondence, inquiries, and entertainment 
-				pass through this single object, the device itself is left completely untouched by the experience, free from 
-				any marks which could evoke the conditions of its use. Unlike other devices that serve as constant 
-				companions, living in pockets and backpacks, subject to regular contact with the flesh of their users, 
-				a router is touched infrequently, if at all, between the moments of installation and disposal. <strong>The router witnesses 
-				all but accumulates no memories; it is the non-place of cyberspace.</strong>
-				</div>
-				<script type="text/javascript">
-				$("#nodes-fulltext").hide();
-				$("#nodes-expander").click(function() { $("#nodes-fulltext").slideDown(); $("#nodes-preview").slideUp(); return false;});
-				</script>
-				<br />
-				<a href="img/nodes.jpg" rel="lightbox" target="_blank"><img src="img/nodes.jpg" width="800" /></a>
-				<br /><br />
-				<iframe src="http://player.vimeo.com/video/74964053?byline=0&amp;portrait=0&amp;color=ffffff" width="800" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-			</li>
-		</ul>
-
-		<a name="rice"></a>
-		<h3>Granular Address (2012)</h3>
-		<ul>
-			<li>
-				A machine for assigning <a href="http://en.wikipedia.org/wiki/IPv6">IPv6</a> addresses to individual grains of rice. Made in conversation with <a href="http://bratton.info">Benjamin Bratton</a> of the <a href="http://www.designgeopolitics.org/">Center for Design and Geopolitics</a> at UC San Diego.
-				<br /><br />
-				Custom software and computer vision algorithms track each grain of rice as it passes through the machine on a conveyor belt. The grains are photographed and assigned a unique IPv6 address within a hierarchy corresponding to the rice's variety and place of origin. 
-				<br /><br/ >
-				Included in <a href="http://inaba.us/project/adaptation-architecture-technology-and-city">Adaptation: Architecture, Technology and the City</a>.
-				<br /><br />
-				<div id="ricegrid">
-					<img src="img/ricegrid.jpg" />
-				</div>
-				<script type="text/javascript">
-					$("#ricegrid").height(54);
-					$("#ricegrid").css("overflow", "hidden");
-					$("#ricegrid").css("cursor", "pointer");
-					$("#ricegrid").click(function() { $("#ricegrid").animate({"height" : $("#ricegrid").height() <= 54 ? 834 : 54})});
-				</script>
-				<br /><br/ >
-				<iframe width="853" height="480" src="http://www.youtube.com/v/QyFHxSKBJgU&vq=hd720" frameborder="0" allowfullscreen></iframe>
-			</li>
-		</ul>
-
-
-		<a name="sosolimited"></a>
-		<h3>Work with <a href="http://www.sosolimited.com">Sosolimited</a> (2012-ongoing)</h3>
-		<ul>
-			<li>
-				I sometimes write software with art and technology studio <a href="http://www.sosolimited.com">Sosolimited</a>. These are just few projects easily accessible on the web.
-				<br /><br />
-			</li>
-			<li>
-				<a href="http://www.recon12.com/index.html"><strong>Reconstitution 2012</strong></a> - A live remix of the 2012 presidential debates.
-				<br />
-				<a href="http://www.youtube.com/watch?v=vWk5an4G0i0"><img src="img/soso/reconstitution.jpg"></a>
-				<br /><br />
-			</li>
-			<li>
-				<a href="http://sosolimited.com/astroverb/"><strong>Astroverb</strong></a> - A language based horoscope for Facebook. Comissioned by the <a href="http://thecreatorsproject.vice.com/">Creators Project</a>. Made with <a href="http://paperjs.org">paper.js</a>.
-				<br /><Br />
-				<iframe width="800" height="450" src="http://www.youtube.com/v/DWu0kA7aHSE&vq=hd720" frameborder="0" allowfullscreen></iframe>
-				<br /><br />
-			</li>
-		</ul>
-
-
-		<a name="SLABSANDCLOUDGRID"></a>
-		<h3>SLAB SAND CLOUD GRID (2012)</h3>
-		<ul>
-		<li>
-		A body of work that explores the infrastructure of Slab City, an informal community in the California desert. Slab City is a microcosm on the fringe. Its remote location and minimal living may make it appear primitive at first, but on closer inspection its distinct flavor of alternative off-the-grid life proves to be unequivocally modern. Each of the projects investigates a particular set of relationships between four classes of infrastructure: sand, slab, cloud and grid. <a href="slab-sand-cloud-grid/SLAB SAND CLOUD GRID.pdf">Read more about this project.</a>
-		<br /><br />
-		<!--
-		<object width="853" height="510"><param name="movie" value="http://www.youtube.com/v/sAYPCsQJhXc?fs=1&amp;hl=en_US&amp;hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/sAYPCsQJhXc?fs=1&amp;hl=en_US&amp;hd=1" type="application/x-shockwave-flash" width="853" height="510" allowscriptaccess="always" allowfullscreen="true"></embed></object>-->
-		<iframe width="853" height="480" src="http://www.youtube.com/v/sAYPCsQJhXc&vq=hd720" frameborder="0" allowfullscreen></iframe>
-
-		<br /><br />
-		<a href="slab-sand-cloud-grid/tools.jpg" rel="lightbox[slab]" title="Slab-making tools from DESERT ALCHEMY"><img src="slab-sand-cloud-grid/tools-small.jpg" /></a>
-		<a href="slab-sand-cloud-grid/audio-map.jpg" rel="lightbox[slab]" title="METRIC AUDIO MAP, a modified surveyor's wheel that plays a recording of Slab City Free Radio"><img src="slab-sand-cloud-grid/audio-map-small.jpg" /></a>
-		
-		<!--<a href="slab-sand-cloud-grid/video-still-01.png" rel="lightbox[slab]"><img src="slab-sand-cloud-grid/video-still-01-small.jpg" /></a>-->
-		<a href="slab-sand-cloud-grid/desert-drop-in-use.jpg" rel="lightbox[slab]" title="DESERT DROP: offline, out-of-the-cloud file sharing"><img src="slab-sand-cloud-grid/desert-drop-in-use-small.jpg" /></a>
-		<a href="slab-sand-cloud-grid/video-still-02.png" rel="lightbox[slab]" title="DESERT ALCHEMY video still: collecting water from the canal."><img src="slab-sand-cloud-grid/video-still-02-small.jpg" /></a>
-
-		<!--
-		<a href="slab-sand-cloud-grid/video-still-03.png" rel="lightbox[slab]"><img src="slab-sand-cloud-grid/video-still-03-small.jpg" /></a>
-		<a href="slab-sand-cloud-grid/video-still-05.png" rel="lightbox[slab]"><img src="slab-sand-cloud-grid/video-still-05-small.jpg" /></a>
-		-->
-		<a href="slab-sand-cloud-grid/usb-slabs-in-use.jpg" rel="lightbox[slab]" title="USB SLABS: Functional flash storage embedded in scale slab models made of concrete."><img src="slab-sand-cloud-grid/usb-slabs-in-use-small.jpg" /></a>
-		<a href="slab-sand-cloud-grid/usb-slabs.jpg" rel="lightbox[slab]" title="USB SLABS: Functional flash storage embedded in scale slab models made of concrete."><img src="slab-sand-cloud-grid/usb-slabs-small.jpg" /></a>
-
-		<img src="slab-sand-cloud-grid/banner.png" />
-		</li>
-		<li>
-		Read a <a href="http://www.kcet.org/arts/artbound/counties/imperial/lessons-from-the-slab-slab-sand-cloud-grid-new-works-by-sam-kronick-and-hermione-spriggs.html">piece about the project on KCET Artbound</a>.
-		</li>		
-		</ul>
-		
-		<a name="ConfigurationSpace"></a>
-		<h3>CONFIGURATION SPACE (2011)</h3>
-		<ul>
-		<li>
-		A minimalist tool for re-imaging/re-imagining familiar spaces, <i>CONFIGURATION SPACE</i> generates an instant immersive meditative zone in any environment. As a virtual palate cleanser, this iPad app re-channels the image of the world through the lens of hyper-rationalized gridded space. Enter into a state of calibration and explore the possibilities of Euclidean striation.
-		<br />
-		<a href="http://itunes.apple.com/us/app/configuration-space/id492504040?mt=8"><img src="img/AppStore.png" alt="Available in the App Store" /></a>
-		<br />
-		<br /><object width="853" height="510"><param name="movie" value="http://www.youtube.com/v/wI_q_ISUQ1I?fs=1&amp;hl=en_US&amp;hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/wI_q_ISUQ1I?fs=1&amp;hl=en_US&amp;hd=1" type="application/x-shockwave-flash" width="853" height="510" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-		</li>
-		</ul>
-		
-		<a name="ProgrammableSpace"></a>
-		<h3>Programmable Space</h3>
-		<ul>
-		<li>An essay on the utopian projects of radically flexible architecture, patterns of software development, games, and augmented reality.
-		<br />
-		<a href="http://newuntitledpage.com/store/programmable-space-8.5x11.pdf"><img src="img/programmable-space-icon.png" /></a></li>
-		</ul>
-
-		<h3>Collaboration with <a href="http://n55.dk" target="_blank">N55</a> (Summer 2008 - 2011)</h3>
-		During the Summer of 2008, I entered into collaboration with art collective N55 based in Copenhagen, Denmark. We have produced the following projects:
-		<ul>
-			<li>
-				<b><a href="http://www.n55.dk/MANUALS/WALKINGHOUSE/walkinghouse.html" target="_blank">WALKING HOUSE</a></b> (Summer 2008 - Ongoing) - Commissioned by <a href="http://www.wysingartscentre.org/app/webroot/exhibition/130" target="_blank">Wysing Art Center Cambridge, UK</a>
-				<br /><br />
-				The WALKING HOUSE was exhibited as part of the <a href="http://www.essen-fuer-das-ruhrgebiet.ruhr2010.de/en/programme/re-designing-the-metropolis/artistic-intervention/emscher-art-2010.html">2010 European Capital of Culture</a> in Essen, Germany.
-				<br/><br />
-				Press: 
-				<a href="http://www.guardian.co.uk/artanddesign/2008/oct/31/architecture-housing" target="_blank">Guardian.co.uk</a> 
-				<a href="http://www.nytimes.com/2008/11/20/garden/20rooms.html" target="_blank">New York Times</a>
-				<a href="http://www.popsci.com/gear-amp-gadgets/article/2008-11/house-walks" target="_blank">Popsci.com</a>
-				<a href="http://news.bbc.co.uk/2/hi/uk_news/england/7686919.stm" target="_blank">BBC News</a>
-				<br /><br />
-				<!--<object width="320" height="265"><param name="movie" value="http://www.youtube.com/v/CvxIB83Y0PA&hl=en&fs=1&rel=0&color1=0x2b405b&color2=0x6b8ab6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/CvxIB83Y0PA&hl=en&fs=1&rel=0&color1=0x2b405b&color2=0x6b8ab6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="320" height="265"></embed></object>	-->	
-				<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/gkb6jfEwe0g&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/gkb6jfEwe0g&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
-				<br />
-				<a href="http://openprocessing.org/visuals/?visualID=7037" target="_blank"><img src="img/house_interface.png" style="height: 265;"></a>
-<!--				<a href="http://www.n55.dk/MANUALS/WALKINGHOUSE/walkinghouse.html" target="_blank"><img src="http://www.n55.dk/MANUALS/WALKINGHOUSE/iwhleg.jpg" style="height: 265px;" alt="WALKINGHOUSE 2" /></a>-->
-				
-				<a href="http://www.n55.dk/MANUALS/WALKINGHOUSE/walkinghouse.html" target="_blank"><img src="http://www.n55.dk/MANUALS/WALKINGHOUSE/iwh1.jpg" style="height: 265px;" alt="WALKINGHOUSE" /></a>
-				<br /><br />
-			</li>
-			<li>
-				<b><a href="http://www.n55.dk/MANUALS/URBANFREEHABITAT/urbanfreehabitat.html" target="_blank">URBAN FREE HABITAT SYSTEM</a></b> (Summer 2008)
-				<br />
-				Produced as part of <a href="http://www.cph-metropolis.dk/en" target="_blank">Metropolis Copenhagen</a>
-				<br />
-				<a href="http://www.flickr.com/photos/kronick/sets/72157606015106989/show/" target="_blank"><img src="http://farm4.static.flickr.com/3110/2643138328_8cab692431_m.jpg" alt="URBAN HABITAT 0" /></a>
-				<a href="http://www.flickr.com/photos/kronick/sets/72157606015106989/show/" target="_blank"><img src="http://farm4.static.flickr.com/3076/2643131704_dd62ab0d89_m.jpg" alt="URBAN HABITAT 1" /></a>
-				<a href="http://www.flickr.com/photos/kronick/sets/72157606015106989/show/" target="_blank"><img src="http://farm4.static.flickr.com/3280/2643125920_7a2cc7af61_m.jpg" alt="URBAN HABITAT 2" /></a>
-				<br /><br />
-			</li>
-			<li>
-				I gave a public lecture for <a href="http://nubtalks.wordpress.com" target="_blank">Nubtalks</a> about my summer in Copenhagen and work with N55.
-				<br />
-				<object width="320" height="241"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=1812753&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=1812753&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00ADEF&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="320" height="241"></embed></object><br /><a href="http://vimeo.com/1812753" target="_blank">Sam Kronick on The Importance of Building</a> from <a href="http://vimeo.com/user649156" target="_blank">Nubtalks</a> on <a href="http://vimeo.com" target="_blank">Vimeo</a>.
-				<br /><br/>	
-			</li>
-			<li>
-				<b>PUBLIC SPACE ROVER</b> (Summer 2011)
-				</br>
-				Human-scale hexapod for urban exploration.
-				<br /><br />
-				<object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/739BxFY-v0o&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/739BxFY-v0o&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object>
-			</li>
-		</ul>			
-
-		<a name="Jonathan"></a>
-		<h3>Jonathan - A Non-Game about the Suburbs (2011)</h3>
-		<ul>
-		<li><i>Jonathan</i> is an interactive non-game that explores the culture and urban form of a typical American suburban landscape. It takes its name and inspiration from the real-life neighborhood of <a href="http://maps.google.com/maps?q=jonathan,+mn&ie=UTF8&hq=&hnear=Jonathan,+Chaska,+Minnesota&gl=us&ll=44.800794,-93.601305&spn=0.007735,0.01929&t=h&z=16" target="_blank">Jonathan, Minnesota</a>, where in the late 1960's <a href="http://www.jonathandocuments.com/1967%20New%20Town%20of%2050,000%20Planned.pdf" target="_blank">an ambitious "new town" was planned for an eventual population of 50,000</a>. <i>Jonathan</i> asks not how we can build a community, but <a href="http://www.citypages.com/2005-07-13/news/arrested-development/" target="_blank">how, once built, will we maintain it?</a>
-<br /><br />
-The player in <i>Jonathan</i> takes on the role of a typical suburban maintenance worker--a lawn mower--as he or she navigates a never-ending software-generated sprawl of lawns, cul-de-sacs, and excessively gabled single-family homes. More of a tool to explore this familiar-but-strange territory than a full-blown "video game," <i>Jonathan</i> generates a nonlinear storyline as the player encounters video vignettes of the banality, the innocence, the boredom, and the restrained aggression of life in the suburbs as <a href="http://www.youtube.com/watch?v=nzl0rjOhZvo&feature=autoplay&list=PLC9468ABEDC2CF208&index=78&playnext=1&shuffle=88652" target="_blank">documented by its residents and posted on YouTube</a>.
-		<br />
-		<br /><object width="853" height="510"><param name="movie" value="http://www.youtube.com/v/OndSGfo3fe8?fs=1&amp;hl=en_US&amp;hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/OndSGfo3fe8?fs=1&amp;hl=en_US&amp;hd=1" type="application/x-shockwave-flash" width="853" height="510" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-		<br />
-		<a href="img/jonathan/top-rectified.jpg" rel="lightbox[jonathan]" target="_blank"><img src="img/jonathan/top-rectified-small.jpg" alt="top" /></a>
-		<a href="img/jonathan/front-perspective.jpg" rel="lightbox[jonathan]" target="_blank"><img src="img/jonathan/front-perspective-small.jpg" alt="front" />
-		<a href="img/jonathan/over-the-shoulder.jpg" rel="lightbox[jonathan]" target="_blank"><img src="img/jonathan/over-the-shoulder-small.jpg" alt="over-the-shouler" />
-		<br /><br />
-		<iframe width="450" height="279" src="http://www.youtube.com/embed/LlMkbwDyc2Y?hd=1" frameborder="0" allowfullscreen></iframe>
-		<iframe width="450" height="279" src="http://www.youtube.com/embed/L92iIXWmFB8?hd=1" frameborder="0" allowfullscreen></iframe>
-		</li>
-		
-		<li><a href="http://www.youtube.com/watch?v=nzl0rjOhZvo&feature=autoplay&list=PLC9468ABEDC2CF208&index=78&playnext=1&shuffle=88652" target="_blank">YouTube playlist with included videos.</a></li>
-		</ul>
-		
-		<h3>Video Games and Augmented Reality Urbanism (2010)</h3>
-		<ul>
-			<li>A look at a contemporary game, <a href="http://www.minecraft.net" target="_blank">Minecraft</a>, through the lens of mid-20th-century utopia as imagined by avant-garde artists and architects. Speculative research on urban augmented reality games. Distilled into a 17 minute presentation for you here.
-			<br /><br />
-			<object width="480" height="385"><param name="movie" value="http://www.youtube.com/v/SJMqzVnrI7g?fs=1&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/SJMqzVnrI7g?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"></embed></object></li>
-			<li><a href="img/armontage/AR LA.jpg" rel="lightbox[AR]"><img src="img/armontage/AR LA.jpg" width="320" /></a> <a href="img/armontage/salk tree2.png" rel="lightbox[AR]"><img src="img/armontage/salk tree2.png" width="320" /></a> <a href="img/armontage/mbta 5.png" rel="lightbox[AR]"><img src="img/armontage/mbta 5.png" width="320" /></a> <a href="img/armontage/meme collage2.png" rel="lightbox[AR]"><img src="img/armontage/meme collage2.png" width="320" /></a>   </li>
-		</ul>
-
-			
-		
-		<!--
-		<h3>Ting-Bing: Open Source Buildingware for Adventure Classrooms</h3>
-		An investigation into participatory architecture -- can a group of high school students find empowerment by constructing their own classroom structure? I designed this system of modular building components and then tested it hands-on with some local students to find out. My undergraduate <a href="/thesis/" target="_blank">thesis-in-the-works</a>. For a detailed description, see <a href="/store/ting-bing_toolkit.pdf" target="_blank">this paper</a>. (In collaboration with Bill McKenna)
-		<br /><br />
-		<ul>
-			<li>
-			<a href="http://classroom.mit.edu/history/" target="_blank">Summer workshops</a> with students from Prospect Hill Academy:
-			<br />
-			<a href="http://www.flickr.com/photos/40305077@N03/sets/72157621481493369/show/with/3730008601/" target="_blank"><img src="http://farm3.static.flickr.com/2457/3730008601_acaf83f57e_m.jpg" alt="Tension Structure Activity" /></a>
-			<a href="http://www.flickr.com/photos/40305077@N03/show/with/3850949217/" target="_blank"><img src="http://farm3.static.flickr.com/2554/3850949217_2453d2cd72_m.jpg" alt="Building it big!" /></a>
-			<a href="http://www.flickr.com/photos/40305077@N03/sets/72157622443884090/show/with/3949189915/" target="_blank"><img src="http://farm3.static.flickr.com/2602/3949189915_edbc9c4cdd_m.jpg" alt="Final presentation and exhibition" /></a>
-			</li>
-			<li>
-			Physical and virtual modeling kits for future workshops:
-			<br />
-			<a href="http://sketchup.google.com/3dwarehouse/search?q=ting-bing&styp=m&btnG=Search" target="_blank"><img src="img/classroom_sketchup.png" style="height: 180px;" alt="Google SketchUp Model" /></a>			
-			<a href="http://www.flickr.com/photos/40305077@N03/4172792340/" target="_blank"><img src="http://farm3.static.flickr.com/2515/4172792340_13c75de4f0_m.jpg" alt="closeup of magnetic model node" /></a>
-			<a href="http://www.flickr.com/photos/40305077@N03/4172035883/" target="_blank"><img src="http://farm3.static.flickr.com/2585/4172035883_bd52a5c8b5_m.jpg" alt="model kit assembled" /></a>
-			</li>
-			<li>
-			Presentations for <a href="http://dfe.media.mit.edu" target="_blank">MAS.960</a> and <a href="http://www.openarchitecturenetwork.org/competitions/challenge/2009" target="_blank">2009 Open Archicture Challenge</a> competition entry.
-			<br />
-			<a href="/presentations/dfe_final.pdf" target="_blank"><img src="img/tingbing.jpg" style="height:160px;" alt="ting-bing" /></a>
-			<a href="http://classroom.mit.edu/a4h/Presentation%20Board-BRANCH.pdf" target="_blank"><img src="http://farm3.static.flickr.com/2549/4057758442_55a354422d_m.jpg" alt="a4h poster" /></a>
-			
-			</li>
-		</ul>
-		-->
-
-		<!--
-		<h3>Grants and Fellowships</h3>
-		<ul>
-			<li><b><a href="http://web.mit.edu/arts/about/awards/schnitzer.html" target="_blank">Harold and Arlene Schnitzer Prize in the Visual Arts</a></b> - Spring 2010</li>
-			<li><b><a href="http://web.mit.edu/kdfund/essay/index.html" target="_blank">I. Austin Kelly III Prize for Excellence in Humanistic Scholarship</a></b> - Spring 2010</li>
-			<li><b><a href="http://writing.mit.edu/initiatives/writing-prizes/description" target="_blank">Vera List Prize for Writing on the Visual Arts</a></b> - Spring 2010</li>
-			<li><b><a href="http://web.mit.edu/arts/do/funding/grants.html" target="_blank">MIT Council for the Arts Grant</a></b> - Spring 2010</li>		
-			<li><b><a href="http://web.mit.edu/mitpsc/resources/fellowships/" target="_blank">MIT Public Service Center Summer Fellowship</a></b> - Summer 2009</li>
-			<li><b><a href="http://visualarts.mit.edu" target="_blank">MIT Visual Arts Program Director's Grant</a></b> - Summer 2009</li>
-			<li><b><a href="http://web.mit.edu/arts/about/awards/wiesner.html" target="_blank">Laya and Jerome B. Wiesner Student Award</a></b> - Spring 2009</li>
-			<li><b><a href="http://web.mit.edu/arts/do/funding/grants.html" target="_blank">MIT Council for the Arts Grant</a></b> - Spring 2009</li>
-			<li><b><a href="http://web.mit.edu/kdfund/fellowship/index.html" target="_blank">Kelly-Douglas Travelling Fellow</a></b> - Summer 2008</li>
-			<li><b><a href="http://web.mit.edu/spair/file/arts-scholars/program_guidelines08-09.pdf" target="_blank">MIT Arts Scholars Program</a></b> - Fall 2007/Spring 2008</li>
-		</ul>		
-		-->
-	</body>
-</html>
+</div>
+</body>
